@@ -23,7 +23,7 @@ Route::get('/', function () {
 Route::group(array('prefix' => 'task'), function()
 {
     Route::get('/',['as' => 'admin.index','uses' => 'Task\TaskController@index']);
-//    Route::delete('/{id}', ['as' => 'admin.index','uses' => 'Task\TaskController@delete']);
+    Route::delete('/{id}', ['as' => 'admin.index','uses' => 'Task\TaskController@delete']);
     Route::post('/', ['as' => 'admin.index','uses' => 'Task\TaskController@save']);
 });
 

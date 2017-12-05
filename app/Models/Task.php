@@ -12,9 +12,4 @@ class Task extends Model
     {
         $this->belongsTo('users');
     }
-
-    public function getUsers()
-    {
-        $sql = 'Select * from user';
-    }
 }

@@ -11,11 +11,31 @@
 |
 */
 
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\Groups::class, function (Faker\Generator $faker){
     return [
-        'name' => $faker->name,
-        'email' => $faker->safeEmail,
-        'password' => bcrypt(str_random(10)),
-        'remember_token' => str_random(10),
+        'name' => $faker->word
+    ];
+});
+
+$factory->define(App\Models\Task::class, function (Faker\Generator $faker){
+    return [
+        'name' => $faker->word
+    ];
+});
+
+$factory->define(App\Models\User::class, function (Faker\Generator $faker) {
+    return [
+        'username' => $faker->userName,
+        'email' => $faker->safeEmail
+    ];
+});
+
+$factory->define(App\Models\UserGroups::class, function (Faker\Generator $faker) {
+    $user_ids = App\Models\User::pluck('id');
+    $thread_ids = App\Models\Groups::pluck('id');
+
+    return [
+        'user_id' => $user_ids->random(),
+        'group_id' => $thread_ids->random(),
     ];
 });

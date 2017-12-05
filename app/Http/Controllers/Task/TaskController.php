@@ -37,11 +37,11 @@ class TaskController extends Controller
         return redirect('/task');
     }
 
-//    public function delete($id)
-//    {
-//        $this->getTaskService()->delete($id);
-//        return redirect('/task');
-//    }
+    public function delete($id)
+    {
+        $this->getTaskService()->delete($id);
+        return redirect('/task');
+    }
 
     /**
      * @return TaskService
