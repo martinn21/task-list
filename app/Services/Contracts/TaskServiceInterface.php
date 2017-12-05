@@ -13,4 +13,6 @@ interface TaskServiceInterface
     public function getTasks();
 
     public function delete($id);
+
+    public function getTasksByGroupId($groupId);
 }

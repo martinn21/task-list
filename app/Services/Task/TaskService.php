@@ -42,6 +42,11 @@ class TaskService implements TaskServiceInterface
         $this->getTaskRepository()->delete($id);
     }
 
+    public function getTasksByGroupId($groupId)
+    {
+        return $this->getTaskRepository()->getTasksByGroupId($groupId);
+    }
+
     /**
      * @return TaskValidator
      */

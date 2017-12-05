@@ -4,6 +4,7 @@ namespace App\Repositories\Task;
 use App\Models\Task;
 use App\Repositories\Contracts\TaskRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TaskRepository implements TaskRepositoryInterface
 {
@@ -30,6 +31,18 @@ class TaskRepository implements TaskRepositoryInterface
     public function delete($id)
     {
         $this->getTask()->findOrFail($id)->delete();
+    }
+
+    public function getTasksByGroupId($groupId)
+    {
+        $query = DB::table('tasks AS t')
+            ->selectRaw('t.name as task_name, u.username as username, g.name')
+            ->join('user_groups AS ug', 't.user_id', '=', 'ug.user_id')
+            ->join('groups AS g', 'g.id', '=', 'ug.group_id')
+            ->join('users as u', 'u.id', '=', 'ug.user_id')
+            ->where('g.id', $groupId);
+        //dd($query->toSql());
+        return $query->get();
     }
 
     /**

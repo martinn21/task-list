@@ -43,6 +43,14 @@ class TaskController extends Controller
         return redirect('/task');
     }
 
+    public function getTasksByGroupId($groupId)
+    {
+        $tasks = $this->getTaskService()->getTasksByGroupId($groupId);
+
+        return view('tasks.tasks_users', [
+            'tasks' => $tasks
+        ]);
+    }
     /**
      * @return TaskService
      */

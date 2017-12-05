@@ -25,6 +25,7 @@ Route::group(array('prefix' => 'task'), function()
     Route::get('/',['as' => 'admin.index','uses' => 'Task\TaskController@index']);
     Route::delete('/{id}', ['as' => 'admin.index','uses' => 'Task\TaskController@delete']);
     Route::post('/', ['as' => 'admin.index','uses' => 'Task\TaskController@save']);
+    Route::get('/users/{group_id}',['as' => 'admin.users.index','uses' => 'Task\TaskController@getTasksByGroupId']);
 });
 
 

@@ -12,4 +12,5 @@ interface TaskRepositoryInterface
 
     public function delete($id);
 
+    public function getTasksByGroupId($groupId);
 }

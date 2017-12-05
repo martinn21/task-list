@@ -18,8 +18,12 @@ $factory->define(App\Models\Groups::class, function (Faker\Generator $faker){
 });
 
 $factory->define(App\Models\Task::class, function (Faker\Generator $faker){
+
+    $user_ids = App\Models\User::pluck('id');
+
     return [
-        'name' => $faker->word
+        'name' => $faker->word,
+        'user_id' => $user_ids->random()
     ];
 });
 
