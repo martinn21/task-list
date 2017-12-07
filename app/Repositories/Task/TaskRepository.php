@@ -36,7 +36,7 @@ class TaskRepository implements TaskRepositoryInterface
     public function getTasksByGroupId($groupId)
     {
         $query = DB::table('tasks AS t')
-            ->selectRaw('t.name as task_name, u.username as username, g.name')
+            ->selectRaw('t.name as task_name, u.username as username, u.email as email, g.name')
             ->join('user_groups AS ug', 't.user_id', '=', 'ug.user_id')
             ->join('groups AS g', 'g.id', '=', 'ug.group_id')
             ->join('users as u', 'u.id', '=', 'ug.user_id')
