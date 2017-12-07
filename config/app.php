@@ -163,6 +163,7 @@ return [
         App\Providers\TaskServiceServiceProvider::class,
         App\Providers\TaskRepositoryServiceProvider::class,
         App\Providers\TaskValidatorServiceProvider::class,
+        \App\Providers\EmailServiceServiceProvider::class,
 
     ],
 
