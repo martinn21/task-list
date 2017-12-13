@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="name-of-project" default="full-build">
+<project name="martin" default="full-build">
  <!-- By default, we assume all tools to be on the $PATH -->
  <property name="pdepend" value="pdepend"/>
  <property name="phpcpd"  value="phpcpd"/>
@@ -8,6 +8,7 @@
  <property name="phploc"  value="phploc"/>
  <property name="phpmd"   value="phpmd"/>
  <property name="phpunit" value="phpunit"/>
+ <property name="composer" value="composer">
 
  <!-- Use this when the tools are located as PHARs in ${basedir}/build/tools
  <property name="pdepend" value="${basedir}/build/tools/pdepend.phar"/>
@@ -28,7 +29,7 @@
  <property name="phpunit" value="${basedir}/vendor/bin/phpunit"/> -->
 
  <target name="full-build"
-         depends="prepare,static-analysis,phpunit,phpdox,-check-failure"
+         depends="prepare,composer,static-analysis,phpunit,phpdox,-check-failure"
          description="Performs static analysis, runs the tests, and generates project documentation"/>
 
  <target name="full-build-parallel"
@@ -225,6 +226,17 @@
   <property name="phpcpd.done" value="true"/>
  </target>
 
+ <target name="composer"
+         unless="composer.done"
+         depends="prepare"
+         description="Run Composer">
+  <exec executable="${composer}" resultproperty="result.composer" taskname="composer">
+   <arg value="install"/>
+  </exec>
+
+  <property name="composer.done" value="true"/>
+ </target> 
+  
  <target name="phpunit"
          unless="phpunit.done"
          depends="prepare"
