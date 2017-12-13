@@ -12,7 +12,7 @@
 
  
  <target name="full-build-martin"
-         depends="prepare,composer,static-analysis,phpunit-no-coverage,-check-failure"
+         depends="prepare,composer,static-analysis-martin,phpunit-no-coverage,-check-failure"
          description="Performs static analysis, runs the tests"/>
  
  <target name="full-build"
@@ -30,6 +30,10 @@
  <target name="static-analysis"
          depends="lint,phploc-ci,pdepend,phpmd-ci,phpcs-ci,phpcpd-ci"
          description="Performs static analysis" />
+ 
+ <target name="static-analysis-martin"
+         depends="lint,phploc-ci,pdepend,phpcs-ci,phpcpd-ci"
+         description="Performs static analysis martins way" />
 
  <!-- Adjust the threadCount attribute's value to the number of CPUs -->
  <target name="static-analysis-parallel"
