@@ -32,7 +32,7 @@
          description="Performs static analysis" />
  
  <target name="static-analysis-martin"
-         depends="lint,phploc-ci,pdepend,phpcs-ci,phpcpd-ci"
+         depends="lint,phploc-ci,pdepend,phpcs-ci"
          description="Performs static analysis martins way" />
 
  <!-- Adjust the threadCount attribute's value to the number of CPUs -->
