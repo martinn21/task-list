@@ -12,7 +12,7 @@
 
  
  <target name="full-build-martin"
-         depends="prepare,composer,static-analysis,phpunit,-check-failure"
+         depends="prepare,composer,static-analysis,phpunit-no-coverage,-check-failure"
          description="Performs static analysis, runs the tests"/>
  
  <target name="full-build"
